@@ -1,6 +1,6 @@
 /***
  * JBoss, Home of Professional Open Source
- * Copyright ${year}, Red Hat, Inc., and individual contributors
+ * Copyright 2012, Red Hat, Inc., and individual contributors
  * by the @authors tag. See the copyright.txt in the distribution for a
  * full listing of individual contributors.
 
@@ -16,6 +16,10 @@
  */
 package org.jboss.aerogear.controller.demo.model;
 
+/**
+ * The model car is where or domain is represented.
+ * It's really important to note that it's an immutable object.
+ */
 public class Car {
     private String color;
     private String brand;

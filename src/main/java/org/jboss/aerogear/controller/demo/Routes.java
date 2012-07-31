@@ -1,6 +1,6 @@
 /***
  * JBoss, Home of Professional Open Source
- * Copyright ${year}, Red Hat, Inc., and individual contributors
+ * Copyright 2012, Red Hat, Inc., and individual contributors
  * by the @authors tag. See the copyright.txt in the distribution for a
  * full listing of individual contributors.
 
@@ -20,8 +20,20 @@ import org.jboss.aerogear.controller.RequestMethod;
 import org.jboss.aerogear.controller.demo.model.Car;
 import org.jboss.aerogear.controller.router.AbstractRoutingModule;
 
+/**
+* Routes are the core of aerogear-controller–demo.
+* It's where we bind the the application bussines controller {@link Home} 
+* to the URL it responds.<br>
+* All the configuration is done with a type safe DSL.
+*
+* @see Home
+*/
+
 public class Routes extends AbstractRoutingModule {
 
+	/**
+	 * Entry point for configuring the routes mapping http requests to the pojo controllers
+	 */
     @Override
     public void configuration() {
         route()
