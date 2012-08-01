@@ -17,8 +17,7 @@
 package org.jboss.aerogear.controller.demo.model;
 
 /**
- * The model car is where or domain is represented.
- * It's really important to note that it's an immutable object.
+ * The model car is an immutable object that represents our domain.
  */
 public class Car {
     private String color;
