@@ -5,7 +5,7 @@
 
     <groupId>org.jboss.aerogear</groupId>
     <artifactId>aerogear-controller-demo</artifactId>
-    <version>0.0.4.M6-SNAPSHOT</version>
+    <version>1.0.0.M1-20121107</version>
     <packaging>war</packaging>
     <name>AeroGear Controller Demo</name>
 
@@ -92,8 +92,22 @@
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-security</artifactId>
-            <version>0.0.4.M6-SNAPSHOT</version>
+            <version>1.0.0.M1-20121107</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.aerogear</groupId>
+            <artifactId>aerogear-security-picketbox</artifactId>
+            <version>1.0.0.M1-20121107</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Import the JPA API, we use provided scope as the API is included
+      in JBoss -->
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.0-api</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

@@ -66,6 +66,18 @@ public class Routes extends AbstractRoutingModule {
                 .on(RequestMethod.POST)
                 .to(Login.class).login(param(User.class));
         route()
+                .from("/otp")
+                .on(RequestMethod.GET)
+                .to(Otp.class).index();
+        route()
+                .from("/otp")
+                .on(RequestMethod.POST)
+                .to(Otp.class).otp(param(User.class));
+        route()
+                .from("/logout")
+                .on(RequestMethod.GET)
+                .to(Login.class).logout();
+        route()
                 .from("/register")
                 .on(RequestMethod.GET)
                 .to(Register.class).index();
@@ -73,7 +85,7 @@ public class Routes extends AbstractRoutingModule {
                 .from("/register")
                 .on(RequestMethod.POST)
                 .to(Register.class).register(param(User.class));
-        
+
         route()
                 .from("/throwException")
                 .on(RequestMethod.GET)

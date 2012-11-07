@@ -15,21 +15,28 @@
   ~ limitations under the License.
   --%>
 
-<jsp:include page="../../template/barcode_header.jsp" />
-<%@page pageEncoding="UTF-8" %>
+<jsp:include page="../../template/header.jsp" />
 <div class="container">
     <div class="sixteen columns">
-        <h1 class="remove-bottom" style="margin-top: 40px">Logged in</h1>
+        <h1 class="remove-bottom" style="margin-top: 40px">Otp Login</h1>
         <hr />
     </div>
     <div class="sixteen columns">
-        <p>maybe you should try the <a href="delorean">delorean page</a></p>
-        hello ${user.id} to the authentication page!
-        <p> <a href="logout">Logout</a></p>
+        <p>maybe you should try the <a href="delorean">restricted delorean page</a></p>
     </div>
-    <p> <a href="otp">Try Google authenticator</a></p>
-    <div id="qrcode-div"></div>
-    <div id="b32"></div>
-    <div id="val"></div>
+    <div class="sixteen columns">
+        <form action="otp" method="post">
+
+            <label>Username:</label>
+            <input type="text" name="user.id"/>
+            <label>Password:</label>
+            <input type="password" name="user.password"/>
+            <label>Otp:</label>
+            <input type="text" name="user.otp"/>
+            <input type="submit"/>
+
+        </form>
+    </div>
+
 </div>
 <jsp:include page="../../template/footer.jsp" />

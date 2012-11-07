@@ -14,12 +14,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.controller.demo.rest;
 
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
+package org.jboss.aerogear.controller.demo;
 
-@ApplicationPath("/auth")
-public class JaxRsActivator extends Application {
-    /* class body intentionally left blank */
+import org.jboss.aerogear.controller.demo.model.User;
+import org.jboss.aerogear.security.auth.AuthenticationManager;
+import org.jboss.aerogear.security.auth.CredentialFactory;
+
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+
+@Stateless
+public class Otp {
+
+    @Inject
+    private AuthenticationManager authenticationManager;
+
+    @Inject
+    private CredentialFactory credentialFactory;
+
+    public void index() {
+        System.out.println("OTP Login page!");
+        authenticationManager.logout();
+    }
+
+    public User otp(User user) {
+        System.out.println("OTP: " + user.getOtp());
+        credentialFactory.setOtpCredential(user);
+        authenticationManager.login(user);
+        return user;
+    }
 }

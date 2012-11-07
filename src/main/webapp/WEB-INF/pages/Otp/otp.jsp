@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
+<%--
   ~ JBoss, Home of Professional Open Source
   ~ Copyright 2012, Red Hat, Inc., and individual contributors
   ~ by the @authors tag. See the copyright.txt in the distribution for a
@@ -14,10 +13,19 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  -->
-<beans xmlns="http://java.sun.com/xml/ns/javaee"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/beans_1_0.xsd">
+  --%>
 
-
-</beans>
+<jsp:include page="../../template/header.jsp" />
+<%@page pageEncoding="UTF-8" %>
+<div class="container">
+    <div class="sixteen columns">
+        <h1 class="remove-bottom" style="margin-top: 40px">Otp Logged in</h1>
+        <hr />
+    </div>
+    <div class="sixteen columns">
+        <p>maybe you should try the <a href="delorean">delorean page</a></p>
+        hello ${user.id} to the authentication page!
+        <p> <a href="logout">Logout</a></p>
+    </div>
+</div>
+<jsp:include page="../../template/footer.jsp" />
