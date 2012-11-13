@@ -28,11 +28,11 @@
         <form action="otp" method="post">
 
             <label>Username:</label>
-            <input type="text" name="user.id"/>
+            <input type="text" name="aeroGearUser.id"/>
             <label>Password:</label>
-            <input type="password" name="user.password"/>
+            <input type="password" name="aeroGearUser.password"/>
             <label>Otp:</label>
-            <input type="text" name="user.otp"/>
+            <input type="text" name="aeroGearUser.otp"/>
             <input type="submit"/>
 
         </form>
