@@ -29,7 +29,6 @@
     </div>
     <p> <a href="otp">Try Google authenticator</a></p>
     <div id="qrcode-div"></div>
-    <div id="b32"></div>
     <div id="val"></div>
 </div>
 <jsp:include page="../../template/footer.jsp" />

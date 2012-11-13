@@ -101,6 +101,12 @@
             <version>1.0.0.M1-20121107</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.abstractj.cuckootp</groupId>
+            <artifactId>cuckootp</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
 
         <!-- Import the JPA API, we use provided scope as the API is included
       in JBoss -->

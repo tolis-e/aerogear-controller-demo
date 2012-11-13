@@ -8,9 +8,9 @@ $(document).ready(function() {
 	        data:{},
 	        type:'GET', 
 	        success:function (data) {
-	        	$('#qrcode-div').qrcode("otpauth://totp/" + data.id + "?secret=" + data.b32);
-	        	$('#b32').text("Base32 Value=" + data.b32);
-	        	$('#val').text("Straight Value=" + data.secret);
+                console.log(data.uri);
+                $('#qrcode-div').qrcode(data.uri);
+                $('#val').text("URI="+data.uri);
 	        }
 	    });
 	}

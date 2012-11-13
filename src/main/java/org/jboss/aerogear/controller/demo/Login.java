@@ -13,16 +13,11 @@ public class Login {
     @Inject
     private AuthenticationManager authenticationManager;
 
-    @Inject
-    private CredentialFactory credentialFactory;
-
     public void index() {
         System.out.println("Login page!");
     }
 
     public User login(User user) {
-
-        credentialFactory.setSimpleCredential(user);
         authenticationManager.login(user);
 
         return user;
