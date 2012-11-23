@@ -17,32 +17,32 @@
 
 package org.jboss.aerogear.controller.demo;
 
-import org.jboss.aerogear.security.auth.AuthenticationManager;
+import org.jboss.aerogear.security.auth.Secret;
 import org.jboss.aerogear.security.model.AeroGearUser;
+import org.jboss.aerogear.security.otp.Totp;
 
 import javax.ejb.Stateless;
+import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 import java.util.logging.Logger;
 
 @Stateless
-public class Login {
-
-    private static final Logger LOGGER = Logger.getLogger(Login.class.getSimpleName());
+public class Otp {
 
     @Inject
-    private AuthenticationManager authenticationManager;
+    @Secret
+    private Instance<String> secret;
 
-    public void index() {
-        LOGGER.info("Login page!");
-    }
+    private static final Logger LOGGER = Logger.getLogger(Otp.class.getSimpleName());
 
-    public AeroGearUser login(AeroGearUser user) {
-        authenticationManager.login(user);
+    public AeroGearUser otp(AeroGearUser user) {
+
+        Totp totp = new Totp(secret.get());
+        boolean result = totp.verify(user.getOtp());
+
+        if (!result)
+            throw new RuntimeException("Invalid OTP");
+
         return user;
-    }
-
-    public void logout() {
-        LOGGER.info("User logout!");
-        authenticationManager.logout();
     }
 }
