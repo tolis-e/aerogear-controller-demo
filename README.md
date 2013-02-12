@@ -1,102 +1,62 @@
-# aerogear-controller-demo - very lean mvc controller
 
-## how to create a new project
+# AeroGear Controller Demo
+This project show cases some of the functionality of [AeroGear Controller](https://github.com/aerogear/aerogear-controller).  
+An instance of this demo is deployed on [OpenShift](https://controller-aerogear.rhcloud.com/aerogear-controller-demo/) and can 
+be used to try it out. Please refer to the _Installation_ section for deploying locally.
 
-### basic use case
-1. add the maven dependency
+## Demo Contents
+This demo project has a number of [Routes](https://github.com/aerogear/aerogear-controller-demo/blob/master/src/main/java/org/jboss/aerogear/controller/demo/Routes.java#L45), 
+some are used in a MVC fashion while others are expected to be called as RESTful resources.
 
-        <dependency>
-            <groupId>org.jboss.aerogear</groupId>
-            <artifactId>aerogear-controller</artifactId>
-            <version>1.0.0.M8</version>
-            <scope>compile</scope>
-        </dependency>
+### Model View Controller Routes
+These routes are used for the web based interface which you can find on [OpenShift](https://controller-aerogear.rhcloud.com/aerogear-controller-demo/). 
+Please refer to the [User Guide](http://aergear.org/docs/guides/aerogear-controller) for detailed information about configuring routes.
 
-1. create a pojo controller
+### RESTful Controller Routes
+There are few routes that are intended to respond with JSON data. These routes deal with the ```/cars``` resource and demonstrate 
+[Pagination](http://aergear.org/docs/guides/aerogear-controller/pagination.html).  
+The basic idea is that a client wants to limit the number of _cars_ it receives per request to a certain number.
 
-        public class Home {
-            public void index() {
-            }
-        }
+#### Requesting the first set of cars:
 
-1. create a Java class containing the routes (must extend `AbstractRoutingModule`)
+     curl -i --header "Accept: application/json" "https://controller-aerogear.rhcloud.com/aerogear-controller-demo/cars?offset=0&color=red&limit=5"
 
-        public class Routes extends AbstractRoutingModule {
+If you inspect the headers returned from the output of the above commad you'll find one named ```Link```. This header is defined
+in the [Web Linking](http://tools.ietf.org/html/rfc5988) specification and contains ```next/previous``` URLs where applicable.  
 
-        @Override
-        public void configuration() {
-            route()
-                   .from("/")
-                   .on(RequestMethod.GET)
-                   .to(Home.class).index();
-            }
-        }
+#### Requesting the next set of cars:
+To retrieve the next set of cars, use the URL for ```next```:
 
-1. create a jsp page at `/WEB-INF/pages/<Controller Class Name>/<method>.jsp`
+     curl -i --header "Accept: application/json" "http://controller-aerogear.rhcloud.com/aerogear-controller-demo/cars?offset=5&color=red&limit=5"
 
-        <!-- /WEB-INF/pages/Home/index.jsp -->
-        <html>
-            <body>
-                <p>hello from index!</p>
-            </body>
-        </html>
-        
-### populating parameters
-
-You can use immutable beans straight away as controller parameters:
-
-        public class Store {
-            public Car save(Car car) {
-                return car;
-            }
-        }
-
-This can be populated by putting a route to it (preferable via post, of course)
-
-        route()
-               .from("/cars")
-               .on(RequestMethod.POST)
-               .to(Store.class).save(param(Car.class));
-
-
-And you can use a simple html form for it, by just following the convention:
-
-            <input type="text" name="car.color"/>
-            <input type="text" name="car.brand"/>
-
-The car object will be automatically populated with the provided values - note that it supports deep linking, so this would work fine too:
-
-            <input type="text" name="car.brand.owner"/>
-
-All the intermediate objects are created automatically.
-
-----
-
-### pagination ###
-There are two routes in this demo that support pagination of data. Both respond with ```cars``` and with the difference that one
-uses [Web Linking](http://tools.ietf.org/html/rfc5988), and the other used custom HTTP headers to provide links to the next and previous pages as appropriate.  
-
-#### web linking
-This is the default in AeroGear Controller and you configure your endpoint similar to this example:
-
-    @Paginated 
-    public List<Car> findCarsBy(final PaginationInfo paginationInfo, final String color) {
-        return getCars(paginationInfo.getOffset(), color, paginationInfo.getLimit());
-    }
+## Installation
+Building the project is done using maven:
     
-#### custom headers
-To use custom headers you simply need to disable Web Linking:
-
-    @Paginated (webLinking = false)
-    public List<Car> findCarsByCustomHeaders(final PaginationInfo paginationInfo, final String color) {
-        return getCars(paginationInfo.getOffset(), color, paginationInfo.getLimit());
-    }
+    mvn install
     
-The Paginated annotation can be further customized, for example the name of the
-query parameters used, their default values if they are missing from the request, and a custom header prefix. 
-Please refer to [Paginated](https://github.com/aerogear/aerogear-controller/tree/master/src/main/java/org/jboss/aerogear/controller/router/rest/pagination/Paginated.java)
-JavaDoc for more information.
+### Deploy
+An AeroGear Controller applicaton can be deployed to any application server with a CDI container.  
+However, this demo uses a datasource that by default exists in JBoss AS 7.x and it is the preferred deployment environment.
 
-### resources
-1. [aerogear-controller](https://github.com/aerogear/aerogear-controller)
-1. [aerogear.org](http://aerogear.org/)
+#### Manual deployment
+
+    $ cp target/aerogear-controller-demo.war $AS7_HOME/standalone/deployments
+
+#### CLI deployment
+
+    $ cd $AS7_HOME
+    $ ./jboss-cli.sh --connect
+    $ [standalone@localhost:9999 /] deploy /path/to/aerogear-controller-demo/target/aerogear-controller-demo.war
+     
+## Documentation
+* [User Guide](http://aergear.org/docs/guides/aerogear-controller)
+* [API](http://aerogear.org/docs/specs/aerogear-controller)
+* [REST API](http://aerogear.org/docs/specs/aerogear-rest-api)
+* [JBosss CLI](https://community.jboss.org/wiki/CommandLineInterface)
+
+## Community
+* [User Forum](https://community.jboss.org/en/aerogear?view=discussions)
+* [Developer Mailing List](http://aerogear-dev.1069024.n5.nabble.com)
+
+## Issue Tracker
+* [JIRA](https://issues.jboss.org/browse/AEROGEAR)
