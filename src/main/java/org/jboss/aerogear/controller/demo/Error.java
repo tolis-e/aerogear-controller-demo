@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.jboss.aerogear.controller.router.error.ErrorResponse;
 import org.jboss.aerogear.controller.router.error.JsonErrorResponse;
 import org.jboss.aerogear.controller.router.parameter.MissingRequestParameterException;
-import org.jboss.aerogear.controller.router.rest.pagination.PagingRequestException;
+import org.jboss.aerogear.controller.router.rest.pagination.PaginationRequestException;
 
 public class Error {
 
@@ -42,7 +42,7 @@ public class Error {
         return new JsonErrorResponse(e.getStatus()).message("error", e.getMessage());
     }
     
-    public ErrorResponse handlePagingRequestException(final PagingRequestException e) {
+    public ErrorResponse handlePagingRequestException(final PaginationRequestException e) {
         return new JsonErrorResponse(HttpServletResponse.SC_BAD_REQUEST).message("error", e.getMessage());
     }
     
