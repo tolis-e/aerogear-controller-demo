@@ -18,12 +18,14 @@
 <jsp:include page="../../template/header.jsp" />
 <div class="container">
     <div class="sixteen columns">
-        <h1 class="remove-bottom" style="margin-top: 40px">Unrestricted page</h1>
+        <h1 class="remove-bottom" style="margin-top: 40px">Logged out!</h1>
         <hr />
     </div>
     <div class="sixteen columns">
-        <p>hello, you just saved a car with the following characteristics:</p>
-        <p>the color is ${car.color} and the brand is ${car.brand}</p>
+        <p> ${aeroGearUser.username} maybe you should try the <a href="delorean">restricted delorean page</a></p>
+        <p>you can also try the <a href="admin">restricted admin page</a></p>
+    <div class="sixteen columns">
+        <p>or try to login again <a href="login">Login page</a></p>
     </div>
 </div>
 <jsp:include page="../../template/footer.jsp" />

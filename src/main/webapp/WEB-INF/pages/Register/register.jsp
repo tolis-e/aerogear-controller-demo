@@ -15,15 +15,30 @@
   ~ limitations under the License.
   --%>
 
-<jsp:include page="../../template/header.jsp" />
+<jsp:include page="../../template/barcode_header.jsp" />
+<%@page pageEncoding="UTF-8" %>
 <div class="container">
     <div class="sixteen columns">
-        <h1 class="remove-bottom" style="margin-top: 40px">Unrestricted page</h1>
+        <h1 class="remove-bottom" style="margin-top: 40px">Logged in</h1>
         <hr />
     </div>
     <div class="sixteen columns">
-        <p>hello, you just saved a car with the following characteristics:</p>
-        <p>the color is ${car.color} and the brand is ${car.brand}</p>
+        <p>maybe you should try the <a href="delorean">delorean page</a></p>
+        <p>you can also try the <a href="admin">restricted admin page</a></p>
+        hello ${aeroGearUser.username} to the authentication page!
+        <p> <a href="logout">Logout</a></p>
+    </div>
+    <div class="sixteen columns">
+        <h2>Google authenticator</h2>
+        <hr />
+        <p><strong>Note:</strong> <em>If you have already scanned the QRCode, is not necessary to do it again</em></p>
+        <h5><a href="#" id="qrcode" >Give it a try!</a></h5>
+        <div id="qrcode-div"></div>
+        <form action="otp" method="post">
+            <label>OTP:</label>
+            <input autocomplete="off" type="password" name="aeroGearUser.otp"/>
+            <input type="submit"/>
+        </form>
     </div>
 </div>
 <jsp:include page="../../template/footer.jsp" />
