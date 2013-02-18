@@ -59,6 +59,7 @@ public class Routes extends AbstractRoutingModule {
                 .to(Error.class).handleMissingRequestParameter(param(MissingRequestParameterException.class));
         route()
                 .on(AeroGearSecurityException.class)
+                .produces(JSP, JSON)
                 .to(Error.class).security();
         route()
                 .on(Exception.class)
