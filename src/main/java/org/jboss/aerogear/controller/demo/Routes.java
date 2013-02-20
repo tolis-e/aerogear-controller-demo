@@ -17,13 +17,14 @@
 package org.jboss.aerogear.controller.demo;
 
 import static org.jboss.aerogear.controller.demo.config.CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE;
+
 import org.jboss.aerogear.controller.demo.model.Car;
 import org.jboss.aerogear.controller.router.AbstractRoutingModule;
 import org.jboss.aerogear.controller.router.MediaType;
 import org.jboss.aerogear.controller.router.RequestMethod;
 import org.jboss.aerogear.controller.router.parameter.MissingRequestParameterException;
 import org.jboss.aerogear.controller.router.rest.pagination.PaginationInfo;
-import org.jboss.aerogear.controller.router.rest.pagination.PagingRequestException;
+import org.jboss.aerogear.controller.router.rest.pagination.PaginationRequestException;
 import org.jboss.aerogear.security.exception.AeroGearSecurityException;
 import org.jboss.aerogear.security.model.AeroGearUser;
 
@@ -49,9 +50,9 @@ public class Routes extends AbstractRoutingModule {
                 .produces(JSON)
                 .to(Error.class).respondWithErrorStatus(param(CarNotFoundException.class));
         route()
-                .on(PagingRequestException.class)
+                .on(PaginationRequestException.class)
                 .produces(JSON)
-                .to(Error.class).handlePagingRequestException(param(PagingRequestException.class));
+                .to(Error.class).handlePagingRequestException(param(PaginationRequestException.class));
         route()
                 .on(MissingRequestParameterException.class)
                 .produces(JSON)
