@@ -62,10 +62,15 @@ public class Routes extends AbstractRoutingModule {
                 .on(AeroGearSecurityException.class)
                 .produces(JSP, JSON)
                 .to(Error.class).security();
+        /*
+         * This error route is only for demo purposes and we do not recommend a production system
+         * to provide this much information, as it could be used by an attacker. 
+         */
         route()
                 .on(UnexpectedCredentialException.class)
                 .produces(JSP)
                 .to(Error.class).alreadyLoggedIn();
+        
         route()
                 .on(Exception.class)
                 .produces(JSP, JSON)
