@@ -43,7 +43,6 @@ public class Admin {
     public List register(AeroGearUser user){
         configuration.create(user);
         configuration.grant(DEFAULT_ROLE).to(user);
-        authenticationManager.login(user);
         return configuration.findAllByRole("simple");
     }
 
