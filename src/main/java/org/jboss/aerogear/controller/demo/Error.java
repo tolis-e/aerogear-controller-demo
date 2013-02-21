@@ -49,4 +49,7 @@ public class Error {
     public ErrorResponse handleMissingRequestParameter(final MissingRequestParameterException e) {
         return new JsonErrorResponse(HttpServletResponse.SC_BAD_REQUEST).message("error", e.getMessage());
     }
+
+    public void alreadyLoggedIn() {
+    }
 }

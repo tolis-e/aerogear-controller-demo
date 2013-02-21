@@ -27,6 +27,7 @@ import org.jboss.aerogear.controller.router.rest.pagination.PaginationInfo;
 import org.jboss.aerogear.controller.router.rest.pagination.PaginationRequestException;
 import org.jboss.aerogear.security.exception.AeroGearSecurityException;
 import org.jboss.aerogear.security.model.AeroGearUser;
+import org.picketlink.authentication.UnexpectedCredentialException;
 
 /**
  * Routes are the core of aerogear-controller–demo.
@@ -61,6 +62,10 @@ public class Routes extends AbstractRoutingModule {
                 .on(AeroGearSecurityException.class)
                 .produces(JSP, JSON)
                 .to(Error.class).security();
+        route()
+                .on(UnexpectedCredentialException.class)
+                .produces(JSP)
+                .to(Error.class).alreadyLoggedIn();
         route()
                 .on(Exception.class)
                 .produces(JSP, JSON)
