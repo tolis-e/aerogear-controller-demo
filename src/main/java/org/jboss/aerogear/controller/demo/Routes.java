@@ -111,14 +111,17 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/login")
                 .on(RequestMethod.POST)
+                .produces(JSP, JSON)
                 .to(Login.class).login(param(AeroGearUser.class));
         route()
                 .from("/otp")
                 .on(RequestMethod.POST)
+                .produces(JSP, JSON)
                 .to(Otp.class).otp(param(AeroGearUser.class));
         route()
                 .from("/logout")
                 .on(RequestMethod.GET)
+                .produces(JSP, JSON)
                 .to(Login.class).logout();
         route()
                 .from("/register")
