@@ -82,6 +82,7 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/delorean").roles("admin")
                 .on(RequestMethod.GET)
+                .produces(JSON)
                 .to(Home.class).anotherPage();
         route()
                 .from("/cars")
