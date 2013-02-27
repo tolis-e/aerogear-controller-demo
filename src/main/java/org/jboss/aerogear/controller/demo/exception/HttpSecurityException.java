@@ -1,4 +1,4 @@
-package org.jboss.aerogear.controller.demo;
+package org.jboss.aerogear.controller.demo.exception;
 
 import org.jboss.aerogear.controller.spi.HttpStatusAwareException;
 import org.jboss.aerogear.security.exception.HttpStatus;
