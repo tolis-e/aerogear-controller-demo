@@ -24,13 +24,14 @@ import org.jboss.aerogear.controller.router.rest.AbstractRestResponder;
 public class CustomMediaTypeResponder extends AbstractRestResponder {
     
     public static final MediaType CUSTOM_MEDIA_TYPE = new MediaType("application/custom", CustomMediaTypeResponder.class);
-
-    public CustomMediaTypeResponder() {
-        super(CUSTOM_MEDIA_TYPE);
-    }
-
+    
     public void writeResponse(Object entity, RouteContext routeContext) throws Exception {
         routeContext.getResponse().getWriter().write("CustomMediaTypeResponder returned: " + entity);
+    }
+
+    @Override
+    public MediaType getMediaType() {
+        return CUSTOM_MEDIA_TYPE;
     }
 
 }
