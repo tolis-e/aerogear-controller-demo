@@ -102,5 +102,11 @@ public class Cars {
             em.close();
         }
     }
+
+    //Only to demonstrate HSTS feature
+    public String[] getCars() {
+        String[] cars = new String[]{"Canyonero", "Bandit", "Truckasaurus", "Slackzda", "Lazyda"};
+        return cars;
+    }
     
 }
