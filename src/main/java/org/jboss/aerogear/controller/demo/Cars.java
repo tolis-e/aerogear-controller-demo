@@ -16,6 +16,7 @@
  */
 package org.jboss.aerogear.controller.demo;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PreDestroy;
@@ -104,9 +105,8 @@ public class Cars {
     }
 
     //Only to demonstrate HSTS feature
-    public String[] getCars() {
-        String[] cars = new String[]{"Canyonero", "Bandit", "Truckasaurus", "Slackzda", "Lazyda"};
-        return cars;
+    public List<String> mycars() {
+        return Arrays.asList(new String[]{"Canyonero", "Bandit", "Truckasaurus", "Slackzda", "Lazyda"});
     }
     
 }
