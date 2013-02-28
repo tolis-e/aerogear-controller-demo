@@ -42,7 +42,7 @@
     </filter>
     <filter-mapping>
         <filter-name>StrictTransportFilter</filter-name>
-        <url-pattern>/cars</url-pattern>
+        <url-pattern>/mycars</url-pattern>
     </filter-mapping>
 
 </web-app>
