@@ -107,6 +107,11 @@ public class Routes extends AbstractRoutingModule {
                 .produces(MediaType.JSON)
                 .to(Cars.class).findById(param("id"));
         route()
+                .from("/mycars")
+                .on(RequestMethod.GET)
+                .produces(JSON, JSP)
+                .to(Cars.class).mycars();
+        route()
                 .from("/login")
                 .on(RequestMethod.GET)
                 .to(Login.class).index();
