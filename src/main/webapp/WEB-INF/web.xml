@@ -37,7 +37,7 @@
         </init-param>
         <init-param>
             <param-name>location</param-name>
-            <param-value>https://localhost:8443/aerogear-controller-demo/cars</param-value>
+            <param-value>https://localhost:8443/aerogear-controller-demo/mycars</param-value>
         </init-param>
     </filter>
     <filter-mapping>
