@@ -48,7 +48,7 @@ To retrieve the next set of cars, use the URL from ```next``` (see the ```Link``
 
      curl --basic -b cookies.txt -c cookies.txt -u john:123 "http://localhost:8080/aerogear-controller-demo/autobots" -v
 
-Testing Digest authentication
+#### Testing Digest authentication
 
      curl --digest -b cookies.txt -c cookies.txt -u john:123 "http://localhost:8080/aerogear-controller-demo/autobots" -v"
 
