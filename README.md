@@ -67,7 +67,7 @@ However, this demo uses a datasource that by default exists in JBoss AS 7.x and 
 * [User Guide](http://aergear.org/docs/guides/aerogear-controller)
 * [API](http://aerogear.org/docs/specs/aerogear-controller)
 * [REST API](http://aerogear.org/docs/specs/aerogear-rest-api)
-* [JBosss CLI](https://community.jboss.org/wiki/CommandLineInterface)
+* [JBoss CLI](https://community.jboss.org/wiki/CommandLineInterface)
 
 ## Community
 * [User Forum](https://community.jboss.org/en/aerogear?view=discussions)
