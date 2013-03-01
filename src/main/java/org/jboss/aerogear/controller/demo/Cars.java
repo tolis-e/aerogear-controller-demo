@@ -108,5 +108,10 @@ public class Cars {
     public List<String> mycars() {
         return Arrays.asList(new String[]{"Canyonero", "Bandit", "Truckasaurus", "Slackzda", "Lazyda"});
     }
+
+    //Only to demonstrate Basic and Digest authentication
+    public List<String> autobots() {
+        return Arrays.asList(new String[]{"Brawn", "Bumblebee", "Cliffjumper", "Beachcomber", "Optimus Prime"});
+    }
     
 }
