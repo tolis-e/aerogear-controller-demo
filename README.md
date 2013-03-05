@@ -12,11 +12,11 @@ some are used in a MVC fashion while others are expected to be called as RESTful
 
 ### Model View Controller Routes
 These routes are used for the web based interface which you can find on [OpenShift](https://controller-aerogear.rhcloud.com/aerogear-controller-demo/). 
-Please refer to the [user guide](http://aergear.org/docs/guides/aerogear-controller) for detailed information about configuring routes.
+Please refer to the [user guide](http://aerogear.org/docs/guides/aerogear-controller) for detailed information about configuring routes.
 
 ### RESTful Controller Routes
 There are few routes that are intended to respond with JSON data. These routes deal with the ```/cars``` resource and demonstrate 
-[pagination](http://aergear.org/docs/guides/aerogear-controller/pagination.html).  
+[pagination](http://aerogear.org/docs/guides/aerogear-controller/pagination.html).  
 The basic idea is that a client wants to limit the number of _cars_ it receives per request to a certain number.
 
 #### Requesting the first set of cars:
@@ -72,7 +72,7 @@ However, this demo uses a datasource that by default exists in JBoss AS 7.x and 
     $ [standalone@localhost:9999 /] deploy /path/to/aerogear-controller-demo/target/aerogear-controller-demo.war
      
 ## Documentation
-* [User Guide](http://aergear.org/docs/guides/aerogear-controller)
+* [User Guide](http://aerogear.org/docs/guides/aerogear-controller)
 * [API](http://aerogear.org/docs/specs/aerogear-controller)
 * [REST API](http://aerogear.org/docs/specs/aerogear-rest-api)
 * [JBoss CLI](https://community.jboss.org/wiki/CommandLineInterface)
