@@ -24,6 +24,7 @@
         <hr />
     </div>
     <div class="sixteen columns">
+        <p> <a href="logout">Logout</a></p>
         <p>This is the admin page! You can register users here</p>
      </div>
     <div class="sixteen columns">

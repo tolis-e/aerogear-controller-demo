@@ -21,9 +21,10 @@
 <div class="container">
     <div class="sixteen columns">
         <h1 class="remove-bottom" style="margin-top: 40px">Restricted Admin page</h1>
-        <hr />
+    <hr />
     </div>
     <div class="sixteen columns">
+        <p> <a href="logout">Logout</a></p>
         <p>User removed !</p>
         <p><a href="../admin"> Register a user!</a></p>
     </div>

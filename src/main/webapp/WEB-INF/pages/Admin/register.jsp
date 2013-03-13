@@ -24,7 +24,8 @@
         <hr />
     </div>
     <div class="sixteen columns">
-       <p><a href="admin"> Register another user!</a></p>
+        <p> <a href="logout">Logout</a></p>
+        <p><a href="admin"> Register another user!</a></p>
     </div>
     <div class="sixteen columns">
         <p>This is the list of registered users :</p>
