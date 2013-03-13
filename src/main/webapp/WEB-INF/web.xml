@@ -17,12 +17,19 @@
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
-    <!-- Mitigate the risk of XSS attacks -->
+    <!-- HttpOnly flag is an additional flag that is used to prevent an XSS -->
     <session-config>
         <cookie-config>
             <http-only>true</http-only>
         </cookie-config>
     </session-config>
+    <!-- Cookie should only be sent using a secure protocol, such as SSL
+    <session-config>
+        <cookie-config>
+            <secure>true</secure>
+        </cookie-config>
+    </session-config>
+    -->
     <!-- Basic authentication filter -->
     <filter>
         <filter-name>BasicAuthenticationFilter</filter-name>
