@@ -1,10 +1,12 @@
 # AeroGear Controller Demo - very lean mvc controller
-[AeroGear](http://aerogear.org) Controller is a very lean mvc controller written in Java. It focuses on the routing of HTTP requests to plain Java object endpoint
-and the handling of the results, by either forwarding the data to a view, or returning the data in the format requested by the caller.
+[AeroGear Controller](https://github.com/aerogear/aerogear-controller) is a very lean model view controller written in Java. 
+It focuses on the routing of HTTP request to plain Java object endpoint and the handling of the returned result. The result of 
+an invocation is either forwarded to a view, or returned in the format requested by the caller
+
 This project show cases some of the functionality of AeroGear Controller.  
 
-An instance of this demo is deployed on [OpenShift](https://controller-aerogear.rhcloud.com/aerogear-controller-demo/) and can 
-be used to try it out. Please refer to the [installation](#install) section for deploying locally.
+An instance of this demo is deployed on [OpenShift](https://controller-aerogear.rhcloud.com/aerogear-controller-demo/), but it 
+can also be deployed locally. Please refer to the [installation](#installation) section for deploying locally.
 
 ## Demo Contents
 This demo project has a number of [routes](https://github.com/aerogear/aerogear-controller-demo/blob/master/src/main/java/org/jboss/aerogear/controller/demo/Routes.java#L45), 
@@ -46,13 +48,13 @@ To retrieve the next set of cars, use the URL from ```next``` (see the ```Link``
 
 #### Testing HTTP Basic authentication
 
-     curl --basic -b cookies.txt -c cookies.txt -u john:123 "http://localhost:8080/aerogear-controller-demo/autobots" -v
+     curl --basic -b cookies.txt -c cookies.txt -u john:123 "http://controller-aerogear.rhcloud.com/aerogear-controller-demo/autobots" -v
 
 #### Testing Digest authentication
 
-     curl --digest -b cookies.txt -c cookies.txt -u john:123 "http://localhost:8080/aerogear-controller-demo/autobots" -v"
+     curl --digest -b cookies.txt -c cookies.txt -u john:123 "http://controller-aerogear.rhcloud.com/aerogear-controller-demo/autobots" -v"
 
-## <a id="install"></a>Installation
+## Installation
 Building the project is done using maven:
     
     mvn install
