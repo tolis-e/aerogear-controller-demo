@@ -24,7 +24,7 @@
     <hr />
     </div>
     <div class="sixteen columns">
-        <p> <a href="logout">Logout</a></p>
+        <p> <a href="${pageContext.request.contextPath}/logout">Logout</a></p>
         <p>User removed !</p>
         <p><a href="../admin"> Register a user!</a></p>
     </div>

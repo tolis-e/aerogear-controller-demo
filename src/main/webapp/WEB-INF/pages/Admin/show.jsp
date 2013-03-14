@@ -24,7 +24,7 @@
         <hr />
     </div>
     <div class="sixteen columns">
-        <p> <a href="logout">Logout</a></p>
+        <p> <a href="${pageContext.request.contextPath}/logout">Logout</a></p>
         <form action="remove" method="post">
             <p>${aeroGearUser.username}</p>
             <input type="hidden" id="aeroGearUser.username" name="aeroGearUser.username" value="${aeroGearUser.username}">
