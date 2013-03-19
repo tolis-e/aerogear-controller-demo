@@ -26,8 +26,7 @@
         <description>Cars Persistence Unit</description>
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
-        <class>org.jboss.aerogear.controller.demo.model.Car</class>
-        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property
                     name="hibernate.hbm2ddl.auto"
