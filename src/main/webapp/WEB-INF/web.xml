@@ -62,8 +62,12 @@
             <param-value>false</param-value>
         </init-param>
         <init-param>
-            <param-name>location</param-name>
+            <param-name>Location</param-name>
             <param-value>https://localhost:8443/aerogear-controller-demo/mycars</param-value>
+        </init-param>
+        <init-param>
+            <param-name>x-frame-options</param-name>
+            <param-value>SAMEORIGIN</param-value>
         </init-param>
     </filter>
 
@@ -82,7 +86,7 @@
     <!-- HSTS filter mapping -->
     <filter-mapping>
         <filter-name>SecureHeadersFilter</filter-name>
-        <url-pattern>/mycars</url-pattern>
+        <url-pattern>/mycars/*</url-pattern>
     </filter-mapping>
 
 </web-app>
