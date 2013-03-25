@@ -16,21 +16,20 @@
  */
 package org.jboss.aerogear.controller.demo;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.ejb.Stateless;
+import javax.enterprise.inject.Instance;
+import javax.inject.Inject;
+
 import org.jboss.aerogear.security.auth.AuthenticationManager;
 import org.jboss.aerogear.security.auth.LoggedUser;
 import org.jboss.aerogear.security.authz.IdentityManagement;
 import org.jboss.aerogear.security.model.AeroGearUser;
 
-import javax.ejb.Stateless;
-import javax.enterprise.inject.Instance;
-import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 @Stateless
 public class Admin {
-
 
     public static final String DEFAULT_ROLE = "simple";
 
@@ -44,18 +43,17 @@ public class Admin {
     @LoggedUser
     private Instance<String> loggedInUserName;
 
-    public List index() {
+    public List<AeroGearUser> index() {
         return listUsers();
     }
 
-    public List register(AeroGearUser user){
+    public List<AeroGearUser> register(AeroGearUser user){
         configuration.create(user);
         configuration.grant(DEFAULT_ROLE).to(user);
-        List userList = listUsers();
-        return userList;
+        return listUsers();
     }
 
-    public List remove(AeroGearUser aeroGearUser) {
+    public List<AeroGearUser> remove(AeroGearUser aeroGearUser) {
         configuration.remove(aeroGearUser);
         return listUsers();
     }
@@ -68,15 +66,12 @@ public class Admin {
      * List all the registered users excepted the logged in user
      *
      */
-    private List listUsers() {
-        List users = configuration.findAllByRole("simple");
+    private List<AeroGearUser> listUsers() {
         AeroGearUser loggedInUser = configuration.get(loggedInUserName.get());
-        List filteredList = new ArrayList();
-        Iterator iterator = users.iterator();
-        while(iterator.hasNext()){
-            AeroGearUser current = (AeroGearUser)iterator.next();
-            if(!current.getUsername().equals(loggedInUser.getUsername())){
-                filteredList.add(current);
+        List<AeroGearUser> filteredList = new ArrayList<AeroGearUser>();
+        for (AeroGearUser user : configuration.findAllByRole("simple")) {
+            if(!user.getUsername().equals(loggedInUser.getUsername())){
+                filteredList.add(user);
             }
         }
         return filteredList;
