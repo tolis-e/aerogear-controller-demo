@@ -16,17 +16,20 @@
  */
 package org.jboss.aerogear.controller.demo;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.ejb.Stateless;
+import javax.enterprise.inject.Instance;
+import javax.inject.Inject;
+
 import org.jboss.aerogear.security.auth.AuthenticationManager;
+import org.jboss.aerogear.security.auth.LoggedUser;
 import org.jboss.aerogear.security.authz.IdentityManagement;
 import org.jboss.aerogear.security.model.AeroGearUser;
 
-import javax.ejb.Stateless;
-import javax.inject.Inject;
-import java.util.List;
-
 @Stateless
 public class Admin {
-
 
     public static final String DEFAULT_ROLE = "simple";
 
@@ -36,22 +39,41 @@ public class Admin {
     @Inject
     private AuthenticationManager authenticationManager;
 
-    public List index() {
-        return configuration.findAllByRole("simple");
+    @Inject
+    @LoggedUser
+    private Instance<String> loggedInUserName;
+
+    public List<AeroGearUser> index() {
+        return listUsers();
     }
 
-    public List register(AeroGearUser user){
+    public List<AeroGearUser> register(AeroGearUser user){
         configuration.create(user);
         configuration.grant(DEFAULT_ROLE).to(user);
-        return configuration.findAllByRole("simple");
+        return listUsers();
     }
 
-    public List remove(AeroGearUser aeroGearUser) {
+    public List<AeroGearUser> remove(AeroGearUser aeroGearUser) {
         configuration.remove(aeroGearUser);
-        return configuration.findAllByRole("simple");
+        return listUsers();
     }
 
     public AeroGearUser show(String id){
-       return configuration.get(id);
+        return configuration.get(id);
+    }
+
+    /**
+     * List all the registered users excepted the logged in user
+     *
+     */
+    private List<AeroGearUser> listUsers() {
+        AeroGearUser loggedInUser = configuration.get(loggedInUserName.get());
+        List<AeroGearUser> filteredList = new ArrayList<AeroGearUser>();
+        for (AeroGearUser user : configuration.findAllByRole("simple")) {
+            if(!user.getUsername().equals(loggedInUser.getUsername())){
+                filteredList.add(user);
+            }
+        }
+        return filteredList;
     }
 }
