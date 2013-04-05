@@ -123,12 +123,14 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/login")
                 .on(RequestMethod.POST)
-                .produces(JSP, JSON)
+                .produces(JSON, JSP)
+                .consumes(JSON, JSP)
                 .to(Login.class).login(param(AeroGearUser.class));
         route()
                 .from("/otp")
                 .on(RequestMethod.POST)
-                .produces(JSP, JSON)
+                .produces(JSON, JSP)
+                .consumes(JSON, JSP)
                 .to(Otp.class).otp(param(AeroGearUser.class));
         route()
                 .from("/auth/otp/secret")
@@ -138,7 +140,8 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/logout")
                 .on(RequestMethod.GET)
-                .produces(JSP, JSON)
+                .produces(JSON, JSP)
+                .consumes(JSON, JSP)
                 .to(Login.class).logout();
         route()
                 .from("/register")
@@ -147,6 +150,8 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/register")
                 .on(RequestMethod.POST)
+                .produces(JSON, JSP)
+                .consumes(JSON, JSP)
                 .to(Register.class).register(param(AeroGearUser.class));
         route()
                 .from("/throwException")
@@ -160,6 +165,8 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/admin").roles("admin")
                 .on(RequestMethod.POST)
+                .produces(JSON, JSP)
+                .consumes(JSON, JSP)
                 .to(Admin.class).register(param(AeroGearUser.class));
         route()
                 .from("/show/{id}").roles("admin")
