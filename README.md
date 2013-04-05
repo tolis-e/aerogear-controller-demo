@@ -23,7 +23,7 @@ The basic idea is that a client wants to limit the number of _cars_ it receives 
 
 #### Requesting the first set of cars:
 
-     curl -i --header "Accept: application/json" "https://controller-aerogear.rhcloud.com/aerogear-controller-demo/cars?offset=0&color=red&limit=5"
+     curl -i --header "Accept: application/json" "http://controller-aerogear.rhcloud.com/aerogear-controller-demo/cars?offset=0&color=red&limit=5"
 
 Running the above command will produce output similar to the below:  
 
