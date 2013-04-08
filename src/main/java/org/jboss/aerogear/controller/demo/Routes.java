@@ -18,6 +18,7 @@ package org.jboss.aerogear.controller.demo;
 
 import static org.jboss.aerogear.controller.demo.config.CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE;
 
+import org.jboss.aerogear.controller.demo.config.CustomMediaTypeResponder;
 import org.jboss.aerogear.controller.demo.model.Car;
 import org.jboss.aerogear.controller.router.AbstractRoutingModule;
 import org.jboss.aerogear.controller.router.MediaType;
@@ -119,12 +120,13 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/login")
                 .on(RequestMethod.GET)
+                .produces(JSP, CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE)
                 .to(Login.class).index();
         route()
                 .from("/login")
                 .on(RequestMethod.POST)
-                .produces(JSON, JSP)
-                .consumes(JSON, JSP)
+                .produces(JSP, CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE)
+                .consumes(JSP, CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE)
                 .to(Login.class).login(param(AeroGearUser.class));
         route()
                 .from("/otp")
