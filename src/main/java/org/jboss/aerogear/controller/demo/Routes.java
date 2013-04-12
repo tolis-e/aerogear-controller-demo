@@ -18,6 +18,7 @@ package org.jboss.aerogear.controller.demo;
 
 import static org.jboss.aerogear.controller.demo.config.CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE;
 
+import org.jboss.aerogear.controller.demo.config.CustomMediaTypeResponder;
 import org.jboss.aerogear.controller.demo.model.Car;
 import org.jboss.aerogear.controller.router.AbstractRoutingModule;
 import org.jboss.aerogear.controller.router.MediaType;
@@ -61,7 +62,7 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .on(AeroGearSecurityException.class)
                 .produces(JSP, JSON)
-                .to(Error.class).security();
+                .to(Error.class).security(param(RuntimeException.class));
         /*
          * This error route is only for demo purposes and we do not recommend a production system
          * to provide this much information, as it could be used by an attacker. 
@@ -119,12 +120,13 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/login")
                 .on(RequestMethod.GET)
+                .produces(JSP, CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE)
                 .to(Login.class).index();
         route()
                 .from("/login")
                 .on(RequestMethod.POST)
-                .produces(JSON, JSP)
-                .consumes(JSON, JSP)
+                .produces(JSP, CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE)
+                .consumes(JSP, CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE)
                 .to(Login.class).login(param(AeroGearUser.class));
         route()
                 .from("/otp")
