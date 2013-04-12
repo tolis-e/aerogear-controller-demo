@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/aerogear/aerogear-controller-demo.png?branch=master)](https://travis-ci.org/aerogear/aerogear-controller-demo)
+
 # AeroGear Controller Demo - very lean mvc controller
 [AeroGear Controller](https://github.com/aerogear/aerogear-controller) is a very lean model view controller written in Java. 
 It focuses on the routing of HTTP request to plain Java object endpoint and the handling of the returned result. The result of 
