@@ -31,9 +31,6 @@ public class Error {
         return "{exception:" + e.getMessage() + "}";
     }
 
-    public void security() {
-    }
-
     public void throwException() {
         throw new RuntimeException("Demo Exception");
     }
@@ -48,6 +45,10 @@ public class Error {
     
     public ErrorResponse handleMissingRequestParameter(final MissingRequestParameterException e) {
         return new JsonErrorResponse(HttpServletResponse.SC_BAD_REQUEST).message("error", e.getMessage());
+    }
+
+    public ErrorResponse security(Exception e) {
+        return new JsonErrorResponse(HttpServletResponse.SC_UNAUTHORIZED).message("error", e.getMessage());
     }
 
     public void alreadyLoggedIn() {
