@@ -18,6 +18,7 @@
 package org.jboss.aerogear.controller.demo.config;
 
 import org.picketlink.idm.IdentityManager;
+import org.picketlink.idm.credential.Digest;
 import org.picketlink.idm.credential.Password;
 import org.picketlink.idm.model.Role;
 import org.picketlink.idm.model.SimpleRole;
@@ -44,18 +45,15 @@ public class PicketLinkDefaultUsers {
     @PostConstruct
     public void create() {
 
-        User user = new SimpleUser("john");
+        User john = newUser("john", "john@doe.com", "John", "Doe");
+        this.identityManager.updateCredential(john, new Password("123"));
 
-        user.setEmail("john@doe.com");
-        user.setFirstName("John");
-        user.setLastName("Doe");
-
-        /*
-         * Note: Password will be encoded in SHA-512 with SecureRandom-1024 salt
-         * See http://lists.jboss.org/pipermail/security-dev/2013-January/000650.html for more information
-         */
-        this.identityManager.add(user);
-        this.identityManager.updateCredential(user, new Password("123"));
+        User agnes = newUser("agnes", "agnes@doe.com", "Agnes", "Doe");
+        Digest digest = new Digest();
+        digest.setRealm("PicketLink Default Realm");
+        digest.setUsername(agnes.getLoginName());
+        digest.setPassword("123");
+        this.identityManager.updateCredential(agnes, digest);
 
         Role roleDeveloper = new SimpleRole("simple");
         Role roleAdmin = new SimpleRole("admin");
@@ -63,9 +61,28 @@ public class PicketLinkDefaultUsers {
         this.identityManager.add(roleDeveloper);
         this.identityManager.add(roleAdmin);
 
+        grantRoles(john, roleDeveloper, roleAdmin);
+        grantRoles(agnes, roleDeveloper, roleAdmin);
+
+    }
+
+    private void grantRoles(User user, Role roleDeveloper, Role roleAdmin) {
         identityManager.grantRole(user, roleDeveloper);
         identityManager.grantRole(user, roleAdmin);
+    }
 
+    private User newUser(String john, String email, String firstName, String lastName) {
+        User user = new SimpleUser(john);
+        user.setEmail(email);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+
+        /*
+         * Note: Password will be encoded in SHA-512 with SecureRandom-1024 salt
+         * See http://lists.jboss.org/pipermail/security-dev/2013-January/000650.html for more information
+         */
+        this.identityManager.add(user);
+        return user;
     }
 
 }
