@@ -48,9 +48,13 @@ To retrieve the next set of cars, use the URL from ```next``` (see the ```Link``
 
      curl -i --header "Accept: application/json" "http://controller-aerogear.rhcloud.com/aerogear-controller-demo/cars?offset=5&color=red&limit=5"
 
+#### Testing HTTP Basic authentication
+
+     curl --basic -b cookies.txt -c cookies.txt -u john:123 "http://controller-aerogear.rhcloud.com/aerogear-controller-demo/autobots" -v
+
 #### Testing Digest authentication
 
-     curl --digest -b cookies.txt -c cookies.txt -u agnes:123 "http://controller-aerogear.rhcloud.com/aerogear-controller-demo/autobots" -v"
+     curl --digest -b cookies.txt -c cookies.txt -u john:123 "http://controller-aerogear.rhcloud.com/aerogear-controller-demo/autobots" -v"
 
 ## Installation
 Building the project is done using maven:
