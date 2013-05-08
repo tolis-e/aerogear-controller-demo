@@ -50,7 +50,7 @@ public class PicketLinkDefaultUsers {
 
         User agnes = newUser("agnes", "agnes@doe.com", "Agnes", "Doe");
         Digest digest = new Digest();
-        digest.setRealm("PicketLink Default Realm");
+        digest.setRealm("default");
         digest.setUsername(agnes.getLoginName());
         digest.setPassword("123");
         this.identityManager.updateCredential(agnes, digest);
