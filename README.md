@@ -54,7 +54,7 @@ To retrieve the next set of cars, use the URL from ```next``` (see the ```Link``
 
 #### Testing Digest authentication
 
-     curl --digest -b cookies.txt -c cookies.txt -u john:123 "http://controller-aerogear.rhcloud.com/aerogear-controller-demo/autobots" -v"
+     curl --digest -b cookies.txt -c cookies.txt -u john:123 "http://controller-aerogear.rhcloud.com/aerogear-controller-demo/autobots" -v
 
 ## Installation
 Building the project is done using maven:
