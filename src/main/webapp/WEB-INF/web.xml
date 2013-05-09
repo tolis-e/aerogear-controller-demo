@@ -30,7 +30,7 @@
         </cookie-config>
     </session-config>
     -->
-    <!-- Basic authentication filter -->
+    <!-- Basic authentication filter
     <filter>
         <filter-name>BasicAuthenticationFilter</filter-name>
         <filter-class>org.picketlink.authentication.web.AuthenticationFilter</filter-class>
@@ -38,14 +38,18 @@
             <param-name>authType</param-name>
             <param-value>BASIC</param-value>
         </init-param>
-    </filter>
-    <!-- Disgest authentication filter -->
+    </filter>  -->
+    <!-- Digest authentication filter -->
     <filter>
         <filter-name>DigestAuthenticationFilter</filter-name>
         <filter-class>org.picketlink.authentication.web.AuthenticationFilter</filter-class>
         <init-param>
             <param-name>authType</param-name>
             <param-value>DIGEST</param-value>
+        </init-param>
+        <init-param>
+            <param-name>realm</param-name>
+            <param-value>default</param-value>
         </init-param>
     </filter>
 
@@ -71,11 +75,11 @@
         </init-param>
     </filter>
 
-    <!-- Basic authentication filter mapping -->
+    <!-- Basic authentication filter mapping
     <filter-mapping>
         <filter-name>BasicAuthenticationFilter</filter-name>
         <url-pattern>/autobots/*</url-pattern>
-    </filter-mapping>
+    </filter-mapping> -->
 
     <!-- Digest authentication filter mapping -->
     <filter-mapping>
