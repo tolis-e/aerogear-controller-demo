@@ -48,13 +48,20 @@ To retrieve the next set of cars, use the URL from ```next``` (see the ```Link``
 
      curl -i --header "Accept: application/json" "http://controller-aerogear.rhcloud.com/aerogear-controller-demo/cars?offset=5&color=red&limit=5"
 
+
+## Basic / Digest Authentication
+
+The demo has built-in support for HTTP Basic / Digest authentication. Because both authentication schemas can't coexist, Digest authentication is enabled and configured by default. To switch the authentication schema (e.g. Basic), uncomment and comment the appropriate sections in the app's ```web.xml``` file.
+
 #### Testing HTTP Basic authentication
 
      curl --basic -b cookies.txt -c cookies.txt -u john:123 "http://controller-aerogear.rhcloud.com/aerogear-controller-demo/autobots" -v
 
 #### Testing Digest authentication
 
-     curl --digest -b cookies.txt -c cookies.txt -u john:123 "http://controller-aerogear.rhcloud.com/aerogear-controller-demo/autobots" -v
+     curl --digest -b cookies.txt -c cookies.txt -u agnes:123 "http://controller-aerogear.rhcloud.com/aerogear-controller-demo/autobots" -v
+
+Note: for Digest authentication, a username called 'agnes' is configured instead of 'john' as in 'Basic' authentication.
 
 ## Installation
 Building the project is done using maven:
