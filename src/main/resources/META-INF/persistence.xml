@@ -38,17 +38,17 @@
     <persistence-unit name="picketlink-default"
                       transaction-type="JTA">
         <description>PicketLink Persistence Unit</description>
-        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+
         <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
 
-        <class>org.picketlink.idm.jpa.schema.IdentityObject</class>
-        <class>org.picketlink.idm.jpa.schema.PartitionObject</class>
-        <class>org.picketlink.idm.jpa.schema.RelationshipObject</class>
-        <class>org.picketlink.idm.jpa.schema.RelationshipIdentityObject</class>
-        <class>org.picketlink.idm.jpa.schema.RelationshipObjectAttribute</class>
-        <class>org.picketlink.idm.jpa.schema.IdentityObjectAttribute</class>
-        <class>org.picketlink.idm.jpa.schema.CredentialObject</class>
-        <class>org.picketlink.idm.jpa.schema.CredentialObjectAttribute</class>
+        <class>org.jboss.aerogear.security.picketlink.model.IdentityObject</class>
+        <class>org.jboss.aerogear.security.picketlink.model.PartitionObject</class>
+        <class>org.jboss.aerogear.security.picketlink.model.RelationshipObject</class>
+        <class>org.jboss.aerogear.security.picketlink.model.RelationshipIdentityObject</class>
+        <class>org.jboss.aerogear.security.picketlink.model.RelationshipObjectAttribute</class>
+        <class>org.jboss.aerogear.security.picketlink.model.IdentityObjectAttribute</class>
+        <class>org.jboss.aerogear.security.picketlink.model.CredentialObject</class>
+        <class>org.jboss.aerogear.security.picketlink.model.CredentialObjectAttribute</class>
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
