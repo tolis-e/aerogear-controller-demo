@@ -49,9 +49,26 @@
         <!-- Define the version of AeroGear APIs we want to import -->
         <aerogear.controller.version>1.0.0</aerogear.controller.version>
         <aerogear.otp.version>1.0.0</aerogear.otp.version>
-        <aerogear.security.version>1.0.0</aerogear.security.version>
+        <aerogear.security.version>1.0.1-SNAPSHOT</aerogear.security.version>
 
     </properties>
+
+    <repositories>
+        <repository>
+            <id>jboss-public-snapshot-repository-group</id>
+            <name>JBoss Public Maven Repository Group</name>
+            <url>https://repository.jboss.org/nexus/content/repositories/snapshots/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <dependencyManagement>
         <dependencies>
