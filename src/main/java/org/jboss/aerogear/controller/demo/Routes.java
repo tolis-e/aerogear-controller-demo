@@ -141,7 +141,7 @@ public class Routes extends AbstractRoutingModule {
                 .to(Otp.class).secret();
         route()
                 .from("/logout")
-                .on(RequestMethod.GET)
+                .on(RequestMethod.GET, RequestMethod.POST)
                 .produces(JSON, JSP)
                 .consumes(JSON, JSP)
                 .to(Login.class).logout();
