@@ -49,9 +49,27 @@
         <!-- Define the version of AeroGear APIs we want to import -->
         <aerogear.controller.version>1.0.0</aerogear.controller.version>
         <aerogear.otp.version>1.0.0</aerogear.otp.version>
-        <aerogear.security.version>1.0.0</aerogear.security.version>
+        <aerogear.security.version>1.0.1</aerogear.security.version>
 
     </properties>
+
+    <repositories>
+        <repository>
+            <id>jboss-staging-repository</id>
+            <name>JBoss Staging Maven Repository</name>
+            <url>https://repository.jboss.org/nexus/content/repositories/jboss_releases_staging_profile-1037</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </repository>
+
+    </repositories>
 
     <dependencyManagement>
         <dependencies>
