@@ -38,7 +38,7 @@ public class Login {
     }
 
     /**
-     * {@link org.jboss.aerogear.security.model.AeroGearUser} registration
+     * User registration
      *
      *
      * @param user represents a simple implementation that holds user's credentials.
