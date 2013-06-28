@@ -60,7 +60,7 @@
     <!-- HSTS filter -->
     <filter>
         <filter-name>SecureHeadersFilter</filter-name>
-        <filter-class>org.jboss.aerogear.security.filter.SecureHeadersFilter</filter-class>
+        <filter-class>org.jboss.aerogear.security.web.filter.SecureHeadersFilter</filter-class>
         <init-param>
             <param-name>max-age</param-name>
             <param-value>2592000</param-value>
