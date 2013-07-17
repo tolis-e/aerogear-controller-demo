@@ -18,7 +18,7 @@
 package org.jboss.aerogear.controller.demo.hawk;
 
 import com.wealdtech.hawk.HawkCredentials;
-import org.jboss.aerogear.security.auth.HawkCredentialProvider;
+import org.jboss.aerogear.security.hawk.auth.HawkCredentialProvider;
 
 public class HawkCredentialsProvider implements HawkCredentialProvider {
 

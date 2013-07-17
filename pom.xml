@@ -51,6 +51,7 @@
         <aerogear.otp.version>1.0.0</aerogear.otp.version>
         <aerogear.security.version>1.1.1</aerogear.security.version>
         <aerogear.security.picketlink.version>1.1.1</aerogear.security.picketlink.version>
+        <aerogear.security.hawk.version>0.1.0</aerogear.security.hawk.version>
 
     </properties>
 
@@ -134,6 +135,13 @@
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-otp-java</artifactId>
             <version>${aerogear.otp.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.aerogear</groupId>
+            <artifactId>aerogear-security-hawk</artifactId>
+            <version>${aerogear.security.hawk.version}</version>
             <scope>compile</scope>
         </dependency>
 
