@@ -23,22 +23,7 @@
             <http-only>true</http-only>
         </cookie-config>
     </session-config>
-    <!-- Cookie should only be sent using a secure protocol, such as SSL
-    <session-config>
-        <cookie-config>
-            <secure>true</secure>
-        </cookie-config>
-    </session-config>
-    -->
-    <!-- Basic authentication filter
-    <filter>
-        <filter-name>BasicAuthenticationFilter</filter-name>
-        <filter-class>org.picketlink.authentication.web.AuthenticationFilter</filter-class>
-        <init-param>
-            <param-name>authType</param-name>
-            <param-value>BASIC</param-value>
-        </init-param>
-    </filter>  -->
+
     <!-- Digest authentication filter -->
     <filter>
         <filter-name>DigestAuthenticationFilter</filter-name>
@@ -79,11 +64,23 @@
         </init-param>
     </filter>
 
-    <!-- Basic authentication filter mapping
-    <filter-mapping>
-        <filter-name>BasicAuthenticationFilter</filter-name>
-        <url-pattern>/autobots/*</url-pattern>
-    </filter-mapping> -->
+
+    <!-- Enable Basic authentication filter
+  <filter>
+      <filter-name>BasicAuthenticationFilter</filter-name>
+      <filter-class>org.picketlink.authentication.web.AuthenticationFilter</filter-class>
+      <init-param>
+          <param-name>authType</param-name>
+          <param-value>BASIC</param-value>
+      </init-param>
+  </filter>  -->
+
+    <!-- Enable Hawk authentication filter
+    <filter>
+        <filter-name>HawkAuthenticationFilter</filter-name>
+        <filter-class>org.jboss.aerogear.security.hawk.authz.HawkAuthenticatorFilter</filter-class>
+    </filter> -->
+
 
     <!-- Digest authentication filter mapping -->
     <filter-mapping>
@@ -96,5 +93,18 @@
         <filter-name>SecureHeadersFilter</filter-name>
         <url-pattern>/mycars/*</url-pattern>
     </filter-mapping>
+
+    <!-- Enable Basic authentication filter mapping
+    <filter-mapping>
+        <filter-name>BasicAuthenticationFilter</filter-name>
+        <url-pattern>/autobots/*</url-pattern>
+    </filter-mapping> -->
+
+    <!-- Enable Hawk authentication filter mapping
+    <filter-mapping>
+        <filter-name>HawkAuthenticationFilter</filter-name>
+        <url-pattern>/autobots/*</url-pattern>
+    </filter-mapping> -->
+
 
 </web-app>

@@ -63,6 +63,14 @@ The demo has built-in support for HTTP Basic / Digest authentication. Because bo
 
 Note: for Digest authentication, a username called 'agnes' is configured instead of 'john' as in 'Basic' authentication.
 
+## Hawk Authentication
+
+Hawk provides an authentication scheme using a message authentication code (MAC) algorithm using a nonce in combination with a timestamp. For more detailed information please refer to the [Hawk page](https://github.com/hueniverse/hawk).
+
+To make use of it on AeroGear, make sure that your *web.xml* has it enabled. This demo already comes with the filter commented, so is just a matter of uncomment the source and have fun.
+
+Once you have enabled the filter, this demo will become a Hawk Server. To test it, please make use of already existing client libraries for [Node.js](https://github.com/hueniverse/hawk), [Ruby](https://github.com/tent/hawk-ruby) or [Java](https://github.com/wealdtech/hawk).  
+
 ## Installation
 Building the project is done using maven:
     

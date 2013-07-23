@@ -51,6 +51,7 @@
         <aerogear.otp.version>1.0.0</aerogear.otp.version>
         <aerogear.security.version>1.1.1</aerogear.security.version>
         <aerogear.security.picketlink.version>1.1.1</aerogear.security.picketlink.version>
+        <aerogear.security.hawk.version>0.1.0</aerogear.security.hawk.version>
 
     </properties>
 
@@ -113,10 +114,34 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- Dependencies from hawk-java -->
+        <dependency>
+            <groupId>com.wealdtech.hawk</groupId>
+            <artifactId>hawk-core</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>14.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- End of dependencies -->
+
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-otp-java</artifactId>
             <version>${aerogear.otp.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.aerogear</groupId>
+            <artifactId>aerogear-security-hawk</artifactId>
+            <version>${aerogear.security.hawk.version}</version>
             <scope>compile</scope>
         </dependency>
 
