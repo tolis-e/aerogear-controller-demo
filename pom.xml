@@ -26,7 +26,14 @@
     <packaging>war</packaging>
     <name>AeroGear Controller Demo</name>
 
-    <url>http://jboss.org/jbossas</url>
+    <url>http://aerogear.org</url>
+
+    <parent>
+        <groupId>org.jboss</groupId>
+        <artifactId>jboss-parent</artifactId>
+        <version>6-beta-2</version>
+    </parent>    
+    
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
