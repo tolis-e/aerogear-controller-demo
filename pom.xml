@@ -22,7 +22,7 @@
 
     <groupId>org.jboss.aerogear</groupId>
     <artifactId>aerogear-controller-demo</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
     <packaging>war</packaging>
     <name>AeroGear Controller Demo</name>
 
