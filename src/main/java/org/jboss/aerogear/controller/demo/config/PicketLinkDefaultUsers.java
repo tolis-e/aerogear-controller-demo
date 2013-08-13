@@ -37,10 +37,10 @@ public class PicketLinkDefaultUsers {
 
 
     @Inject
-    private IdentityManager identityManager;
-
-    @Inject
     private PartitionManager partitionManager;
+
+    private IdentityManager identityManager;
+    private RelationshipManager relationshipManager;
 
     /**
      * <p>Loads some users during the first construction.</p>
@@ -48,6 +48,9 @@ public class PicketLinkDefaultUsers {
     //TODO this entire initialization code will be removed
     @PostConstruct
     public void create() {
+
+        this.identityManager = partitionManager.createIdentityManager();
+        this.relationshipManager = partitionManager.createRelationshipManager();
 
         User john = newUser("john", "john@doe.com", "John", "Doe");
         this.identityManager.updateCredential(john, new Password("123"));
@@ -71,7 +74,6 @@ public class PicketLinkDefaultUsers {
     }
 
     private void grantRoles(User user, Role roleDeveloper, Role roleAdmin) {
-        RelationshipManager relationshipManager = partitionManager.createRelationshipManager();
         SampleModel.grantRole(relationshipManager, user, roleDeveloper);
         SampleModel.grantRole(relationshipManager, user, roleAdmin);
     }
