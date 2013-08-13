@@ -18,12 +18,13 @@
 package org.jboss.aerogear.controller.demo.config;
 
 import org.picketlink.idm.IdentityManager;
+import org.picketlink.idm.PartitionManager;
+import org.picketlink.idm.RelationshipManager;
 import org.picketlink.idm.credential.Digest;
 import org.picketlink.idm.credential.Password;
-import org.picketlink.idm.model.Role;
-import org.picketlink.idm.model.SimpleRole;
-import org.picketlink.idm.model.SimpleUser;
-import org.picketlink.idm.model.User;
+import org.picketlink.idm.model.sample.Role;
+import org.picketlink.idm.model.sample.SampleModel;
+import org.picketlink.idm.model.sample.User;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
@@ -36,7 +37,10 @@ public class PicketLinkDefaultUsers {
 
 
     @Inject
+    private PartitionManager partitionManager;
+
     private IdentityManager identityManager;
+    private RelationshipManager relationshipManager;
 
     /**
      * <p>Loads some users during the first construction.</p>
@@ -44,6 +48,9 @@ public class PicketLinkDefaultUsers {
     //TODO this entire initialization code will be removed
     @PostConstruct
     public void create() {
+
+        this.identityManager = partitionManager.createIdentityManager();
+        this.relationshipManager = partitionManager.createRelationshipManager();
 
         User john = newUser("john", "john@doe.com", "John", "Doe");
         this.identityManager.updateCredential(john, new Password("123"));
@@ -55,8 +62,8 @@ public class PicketLinkDefaultUsers {
         digest.setPassword("123");
         this.identityManager.updateCredential(agnes, digest);
 
-        Role roleDeveloper = new SimpleRole("simple");
-        Role roleAdmin = new SimpleRole("admin");
+        Role roleDeveloper = new Role("simple");
+        Role roleAdmin = new Role("admin");
 
         this.identityManager.add(roleDeveloper);
         this.identityManager.add(roleAdmin);
@@ -67,12 +74,12 @@ public class PicketLinkDefaultUsers {
     }
 
     private void grantRoles(User user, Role roleDeveloper, Role roleAdmin) {
-        identityManager.grantRole(user, roleDeveloper);
-        identityManager.grantRole(user, roleAdmin);
+        SampleModel.grantRole(relationshipManager, user, roleDeveloper);
+        SampleModel.grantRole(relationshipManager, user, roleAdmin);
     }
 
     private User newUser(String john, String email, String firstName, String lastName) {
-        User user = new SimpleUser(john);
+        User user = new User(john);
         user.setEmail(email);
         user.setFirstName(firstName);
         user.setLastName(lastName);
