@@ -19,12 +19,14 @@ package org.jboss.aerogear.controller.demo;
 
 import org.jboss.aerogear.security.auth.LoggedUser;
 import org.jboss.aerogear.security.auth.Secret;
+import org.jboss.aerogear.security.authz.IdentityManagement;
 import org.jboss.aerogear.security.otp.Totp;
 import org.picketlink.idm.model.sample.User;
 
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
+
 import java.util.logging.Logger;
 
 @Stateless
@@ -37,6 +39,9 @@ public class Otp {
     @Inject
     @LoggedUser
     private Instance<String> loggedInUserName;
+    
+    @Inject
+    private IdentityManagement configuration;
 
     private static final Logger LOGGER = Logger.getLogger(Otp.class.getSimpleName());
 
@@ -44,7 +49,7 @@ public class Otp {
         return new Totp(secret.get()).uri(loggedInUserName.get());
     }
 
-    public User otp(User user, String otp) {
+    public User otp(String otp) {
 
         Totp totp = new Totp(secret.get());
         boolean result = totp.verify(otp);
@@ -52,6 +57,8 @@ public class Otp {
         if (!result)
             throw new RuntimeException("Invalid OTP");
 
+        User user = (User) configuration.findByUsername(loggedInUserName.get());
+        
         return user;
     }
 }
